@@ -513,17 +513,23 @@ async function getJumps(orgin, desto) {
 },{"esijs":54}],5:[function(require,module,exports){
 let getJumps = require('./getJumps')
 let numeral = require('numeral')
-console.log(getJumps)
+let esiJS = require('esijs')
 
 let b = document.getElementById('b')
-        b.onclick = (e) => {
-            e.preventDefault()
-            getJumps("Tanoo", "Uchoshi")
-            .then(r => {
-                p.innerText = `${numeral(r * 1000000).format('0,0,0')} ISK`
-            })
-        }
-},{"./getJumps":4,"numeral":57}],6:[function(require,module,exports){
+
+b.onclick = (e) => {
+    e.preventDefault()
+    let desto = document.getElementById('desto')
+
+    let v = desto.value
+    console.log(v)
+
+    v === '' ? false : getJumps("Amarr", v)
+    .then(r => {
+        p.innerText = `${numeral(r * 1000000).format('0,0,0')} ISK for ${r} jumps`
+    })
+}
+},{"./getJumps":4,"esijs":54,"numeral":57}],6:[function(require,module,exports){
 module.exports = require('./lib/axios');
 },{"./lib/axios":8}],7:[function(require,module,exports){
 'use strict';
