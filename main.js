@@ -1,11 +1,10 @@
-let getJumps = require('./getJumps')
-let numeral = require('numeral')
-let esiJS = require('esijs')
 
+let numeral = require('numeral')
 let b = document.getElementById('b')
 
 b.onclick = (e) => {
     e.preventDefault()
+    let getJumps = require('./getJumps')
     let desto = document.getElementById('desto')
 
     let v = desto.value
