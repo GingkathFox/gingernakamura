@@ -510,9 +510,20 @@ async getJumps(orgin, desto) {
     return jumps.length
 }
 }
-},{"esijs":53}],5:[function(require,module,exports){
+},{"esijs":54}],5:[function(require,module,exports){
+let getJumps = require('./getJumps')
+
+let b = document.getElementById('b')
+        b.onclick = (e) => {
+            e.preventDefault()
+            getJumps("Tanoo", "Uchoshi")
+            .then(r => {
+                p.innerText = r
+            })
+        }
+},{"./getJumps":4}],6:[function(require,module,exports){
 module.exports = require('./lib/axios');
-},{"./lib/axios":7}],6:[function(require,module,exports){
+},{"./lib/axios":8}],7:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -688,7 +699,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"../core/createError":13,"./../core/settle":17,"./../helpers/buildURL":21,"./../helpers/cookies":23,"./../helpers/isURLSameOrigin":25,"./../helpers/parseHeaders":27,"./../utils":29}],7:[function(require,module,exports){
+},{"../core/createError":14,"./../core/settle":18,"./../helpers/buildURL":22,"./../helpers/cookies":24,"./../helpers/isURLSameOrigin":26,"./../helpers/parseHeaders":28,"./../utils":30}],8:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -743,7 +754,7 @@ module.exports = axios;
 // Allow use of default import syntax in TypeScript
 module.exports.default = axios;
 
-},{"./cancel/Cancel":8,"./cancel/CancelToken":9,"./cancel/isCancel":10,"./core/Axios":11,"./core/mergeConfig":16,"./defaults":19,"./helpers/bind":20,"./helpers/spread":28,"./utils":29}],8:[function(require,module,exports){
+},{"./cancel/Cancel":9,"./cancel/CancelToken":10,"./cancel/isCancel":11,"./core/Axios":12,"./core/mergeConfig":17,"./defaults":20,"./helpers/bind":21,"./helpers/spread":29,"./utils":30}],9:[function(require,module,exports){
 'use strict';
 
 /**
@@ -764,7 +775,7 @@ Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 var Cancel = require('./Cancel');
@@ -823,14 +834,14 @@ CancelToken.source = function source() {
 
 module.exports = CancelToken;
 
-},{"./Cancel":8}],10:[function(require,module,exports){
+},{"./Cancel":9}],11:[function(require,module,exports){
 'use strict';
 
 module.exports = function isCancel(value) {
   return !!(value && value.__CANCEL__);
 };
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -918,7 +929,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = Axios;
 
-},{"../helpers/buildURL":21,"./../utils":29,"./InterceptorManager":12,"./dispatchRequest":14,"./mergeConfig":16}],12:[function(require,module,exports){
+},{"../helpers/buildURL":22,"./../utils":30,"./InterceptorManager":13,"./dispatchRequest":15,"./mergeConfig":17}],13:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -972,7 +983,7 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 
 module.exports = InterceptorManager;
 
-},{"./../utils":29}],13:[function(require,module,exports){
+},{"./../utils":30}],14:[function(require,module,exports){
 'use strict';
 
 var enhanceError = require('./enhanceError');
@@ -992,7 +1003,7 @@ module.exports = function createError(message, config, code, request, response) 
   return enhanceError(error, config, code, request, response);
 };
 
-},{"./enhanceError":15}],14:[function(require,module,exports){
+},{"./enhanceError":16}],15:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1080,7 +1091,7 @@ module.exports = function dispatchRequest(config) {
   });
 };
 
-},{"../cancel/isCancel":10,"../defaults":19,"./../helpers/combineURLs":22,"./../helpers/isAbsoluteURL":24,"./../utils":29,"./transformData":18}],15:[function(require,module,exports){
+},{"../cancel/isCancel":11,"../defaults":20,"./../helpers/combineURLs":23,"./../helpers/isAbsoluteURL":25,"./../utils":30,"./transformData":19}],16:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1124,7 +1135,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   return error;
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -1177,7 +1188,7 @@ module.exports = function mergeConfig(config1, config2) {
   return config;
 };
 
-},{"../utils":29}],17:[function(require,module,exports){
+},{"../utils":30}],18:[function(require,module,exports){
 'use strict';
 
 var createError = require('./createError');
@@ -1204,7 +1215,7 @@ module.exports = function settle(resolve, reject, response) {
   }
 };
 
-},{"./createError":13}],18:[function(require,module,exports){
+},{"./createError":14}],19:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1226,7 +1237,7 @@ module.exports = function transformData(data, headers, fns) {
   return data;
 };
 
-},{"./../utils":29}],19:[function(require,module,exports){
+},{"./../utils":30}],20:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -1328,7 +1339,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 }).call(this,require('_process'))
-},{"./adapters/http":6,"./adapters/xhr":6,"./helpers/normalizeHeaderName":26,"./utils":29,"_process":3}],20:[function(require,module,exports){
+},{"./adapters/http":7,"./adapters/xhr":7,"./helpers/normalizeHeaderName":27,"./utils":30,"_process":3}],21:[function(require,module,exports){
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -1341,7 +1352,7 @@ module.exports = function bind(fn, thisArg) {
   };
 };
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1414,7 +1425,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   return url;
 };
 
-},{"./../utils":29}],22:[function(require,module,exports){
+},{"./../utils":30}],23:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1430,7 +1441,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
     : baseURL;
 };
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1485,7 +1496,7 @@ module.exports = (
     })()
 );
 
-},{"./../utils":29}],24:[function(require,module,exports){
+},{"./../utils":30}],25:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1501,7 +1512,7 @@ module.exports = function isAbsoluteURL(url) {
   return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1571,7 +1582,7 @@ module.exports = (
     })()
 );
 
-},{"./../utils":29}],26:[function(require,module,exports){
+},{"./../utils":30}],27:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -1585,7 +1596,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
   });
 };
 
-},{"../utils":29}],27:[function(require,module,exports){
+},{"../utils":30}],28:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1640,7 +1651,7 @@ module.exports = function parseHeaders(headers) {
   return parsed;
 };
 
-},{"./../utils":29}],28:[function(require,module,exports){
+},{"./../utils":30}],29:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1669,7 +1680,7 @@ module.exports = function spread(callback) {
   };
 };
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var bind = require('./helpers/bind');
@@ -2005,7 +2016,7 @@ module.exports = {
   trim: trim
 };
 
-},{"./helpers/bind":20,"is-buffer":55}],30:[function(require,module,exports){
+},{"./helpers/bind":21,"is-buffer":56}],31:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2056,7 +2067,7 @@ module.exports = {
         return request({ subUrl: `alliances/${allianceId}` })
     }
 }
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],31:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],32:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2110,7 +2121,7 @@ module.exports = {
         return request({ subUrl: `characters/${characterId}` })
     }
 }
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],32:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],33:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2166,7 +2177,7 @@ module.exports = {
         },
     }
 }
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],33:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],34:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2217,7 +2228,7 @@ module.exports = {
         return request({ subUrl: `corporations/npccorps` })
     }
 }
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],34:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],35:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2279,7 +2290,7 @@ module.exports = {
         return request({ subUrl: `dogma/effects` })
     }
 }
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],35:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],36:[function(require,module,exports){
 function inputValidation ({ input, type, message, options, optional = false }) {
     // throwError utility function
     const throwError = () => {
@@ -2299,7 +2310,7 @@ function inputValidation ({ input, type, message, options, optional = false }) {
 
 module.exports = inputValidation
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 const axios = require('axios')
 const { link, dataSource } = require('../../esi.json')
 
@@ -2358,7 +2369,7 @@ function makeRequest ({ subUrl, post = false, body, query}) {
 }
 
 module.exports = makeRequest
-},{"../../esi.json":54,"axios":5}],37:[function(require,module,exports){
+},{"../../esi.json":55,"axios":6}],38:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 
 module.exports = {
@@ -2414,7 +2425,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/request":36}],38:[function(require,module,exports){
+},{"./esiJS-Utils/request":37}],39:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 
 module.exports = {
@@ -2428,7 +2439,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/request":36}],39:[function(require,module,exports){
+},{"./esiJS-Utils/request":37}],40:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 
 module.exports = {
@@ -2449,7 +2460,7 @@ module.exports = {
         return request({ subUrl: `industry/systems` })
     }
 }
-},{"./esiJS-Utils/request":36}],40:[function(require,module,exports){
+},{"./esiJS-Utils/request":37}],41:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 
 module.exports = {
@@ -2463,7 +2474,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/request":36}],41:[function(require,module,exports){
+},{"./esiJS-Utils/request":37}],42:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2483,7 +2494,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],42:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],43:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2501,7 +2512,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],43:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],44:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2587,7 +2598,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],44:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],45:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2632,7 +2643,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],45:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],46:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2650,7 +2661,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],46:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],47:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2677,7 +2688,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],47:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],48:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -2724,7 +2735,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],48:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],49:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 
 module.exports = {
@@ -2754,7 +2765,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/request":36}],49:[function(require,module,exports){
+},{"./esiJS-Utils/request":37}],50:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 
 module.exports = {
@@ -2768,7 +2779,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/request":36}],50:[function(require,module,exports){
+},{"./esiJS-Utils/request":37}],51:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -3100,7 +3111,7 @@ module.exports = {
     },
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],51:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],52:[function(require,module,exports){
 (function (__dirname){
 module.exports = {
     /**
@@ -3147,7 +3158,7 @@ module.exports = {
     }
 }
 }).call(this,"/node_modules/esijs/Functions")
-},{"fs":1,"path":2}],52:[function(require,module,exports){
+},{"fs":1,"path":2}],53:[function(require,module,exports){
 const request = require('./esiJS-Utils/request')
 const inputValidation = require('./esiJS-Utils/inputValidation')
 
@@ -3187,7 +3198,7 @@ module.exports = {
     }
 }
 
-},{"./esiJS-Utils/inputValidation":35,"./esiJS-Utils/request":36}],53:[function(require,module,exports){
+},{"./esiJS-Utils/inputValidation":36,"./esiJS-Utils/request":37}],54:[function(require,module,exports){
 module.exports = {
     util: require('./Functions/utility'),
     alliance: require('./Functions/alliances'),
@@ -3212,12 +3223,12 @@ module.exports = {
     wars: require('./Functions/wars')
 }
 
-},{"./Functions/alliances":30,"./Functions/character":31,"./Functions/contracts":32,"./Functions/corporation":33,"./Functions/dogma":34,"./Functions/factionWarfare":37,"./Functions/incursions":38,"./Functions/industry":39,"./Functions/insurance":40,"./Functions/killmails":41,"./Functions/loyalty":42,"./Functions/market":43,"./Functions/opportunities":44,"./Functions/planetaryInteraction":45,"./Functions/routes":46,"./Functions/search":47,"./Functions/sovereignty":48,"./Functions/status":49,"./Functions/universe":50,"./Functions/utility":51,"./Functions/wars":52}],54:[function(require,module,exports){
+},{"./Functions/alliances":31,"./Functions/character":32,"./Functions/contracts":33,"./Functions/corporation":34,"./Functions/dogma":35,"./Functions/factionWarfare":38,"./Functions/incursions":39,"./Functions/industry":40,"./Functions/insurance":41,"./Functions/killmails":42,"./Functions/loyalty":43,"./Functions/market":44,"./Functions/opportunities":45,"./Functions/planetaryInteraction":46,"./Functions/routes":47,"./Functions/search":48,"./Functions/sovereignty":49,"./Functions/status":50,"./Functions/universe":51,"./Functions/utility":52,"./Functions/wars":53}],55:[function(require,module,exports){
 module.exports={
   "link": "https://esi.evetech.net/latest/",
   "dataSource": "tranquility"
 }
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -3230,4 +3241,4 @@ module.exports = function isBuffer (obj) {
     typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
 }
 
-},{}]},{},[4]);
+},{}]},{},[5]);

@@ -1,17 +1,10 @@
-let esiJS = require('esijs')
+let getJumps = require('./getJumps')
 
-
-module.exports = {
-
-async getJumps(orgin, desto) {
-    orgin = await esiJS.universe.systems.systemInfo(orgin)
-    desto = await esiJS.universe.systems.systemInfo(desto)
-
-    orgin = orgin.id
-    desto = desto.id
-
-    let jumps = await esiJS.routes.planRoute(orgin, desto, 'shortest')
-
-    return jumps.length
-}
-}
+let b = document.getElementById('b')
+        b.onclick = (e) => {
+            e.preventDefault()
+            getJumps("Tanoo", "Uchoshi")
+            .then(r => {
+                p.innerText = r
+            })
+        }
