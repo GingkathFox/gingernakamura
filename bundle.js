@@ -507,9 +507,8 @@ async function getJumps(orgin, desto) {
     desto = desto.solar_system[0]
 
     let jumps = await esiJS.routes.planRoute(orgin, desto, 'shortest')
-    console.log(jumps, jumps.length, jumps.length - 1)
 
-    return jumps.length - 1
+    return jumps.length
 }
 },{"esijs":54}],5:[function(require,module,exports){
 
@@ -526,7 +525,7 @@ b.onclick = (e) => {
 
     v === '' ? false : getJumps("Amarr", v)
     .then(r => {
-        p.innerText = `${numeral(r - 1 * 1000000).format('0,0,0')} ISK for ${r - 1} jumps`
+        p.innerText = `${numeral((r - 1) * 1000000).format('0,0,0')} ISK for ${r - 1} jumps`
     })
 }
 },{"./getJumps":4,"numeral":57}],6:[function(require,module,exports){

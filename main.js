@@ -12,6 +12,6 @@ b.onclick = (e) => {
 
     v === '' ? false : getJumps("Amarr", v)
     .then(r => {
-        p.innerText = `${numeral(r - 1 * 1000000).format('0,0,0')} ISK for ${r - 1} jumps`
+        p.innerText = `${numeral((r - 1) * 1000000).format('0,0,0')} ISK for ${r - 1} jumps`
     })
 }
