@@ -12,7 +12,7 @@ async function getJumps(orgin, desto) {
     desto = desto.solar_system[0]
 
     let jumps = await esiJS.routes.planRoute(orgin, desto, 'shortest')
-    console.log(jumps, jumps.length, jumps.length - 1)
+    //console.log(jumps, jumps.length, jumps.length - 1)
 
     return jumps.length - 1
 }
