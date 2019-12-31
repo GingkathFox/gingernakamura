@@ -1,6 +1,9 @@
 let esiJS = require('esijs')
 
-async function getJumps(orgin, desto) {
+
+module.exports = {
+
+async getJumps(orgin, desto) {
     orgin = await esiJS.universe.systems.systemInfo(orgin)
     desto = await esiJS.universe.systems.systemInfo(desto)
 
@@ -10,4 +13,5 @@ async function getJumps(orgin, desto) {
     let jumps = await esiJS.routes.planRoute(orgin, desto, 'shortest')
 
     return jumps.length
+}
 }
