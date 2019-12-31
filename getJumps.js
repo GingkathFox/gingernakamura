@@ -4,15 +4,14 @@ let esiJS = require('esijs')
 module.exports = getJumps
 
 async function getJumps(orgin, desto) {
-    orgin = await esiJS.universe.systems.systemInfo(orgin)
-    desto = await esiJS.universe.systems.systemInfo(desto)
+    orgin = await esiJS.search.search(orgin, 'solar_system', true)
+    desto = await esiJS.search.search(desto, 'solar_system', true)
 
-    orgin = orgin.id
-    desto = desto.id
+    orgin = orgin.solar_system[0]
+
+    desto = desto.solar_system[0]
 
     let jumps = await esiJS.routes.planRoute(orgin, desto, 'shortest')
 
     return jumps.length
 }
-
-console.log(getJumps)
