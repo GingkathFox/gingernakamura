@@ -1,7 +1,7 @@
 let esiJS = require('esijs')
 
 
-module.exports = getJumps(orgin, desto) {
+module.exports = async function getJumps(orgin, desto) {
     orgin = await esiJS.universe.systems.systemInfo(orgin)
     desto = await esiJS.universe.systems.systemInfo(desto)
 

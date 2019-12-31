@@ -1,5 +1,6 @@
 let getJumps = require('./getJumps')
 
+console.log(getJumps)
 
 let b = document.getElementById('b')
         b.onclick = (e) => {
