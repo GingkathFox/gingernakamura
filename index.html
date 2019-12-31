@@ -1,6 +1,66 @@
 <html>
     <head>
         <title>Cost Tool for Ginger Nakamura</title>
+        <style>
+        body {
+    background-color: #131314;
+    color: #c4c4c4;
+    font-family: "Roboto Condensed", Arial, "sans-serif";
+    display: grid;
+    grid-template: 193px 40px auto / 320px 1fr;
+    width: calc(100vw - 25px);
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type="text"],#data {
+    background-color: #282E33;
+    border: 1px solid #404850;
+    color: #c4c4c4;
+    height: 22px;
+    padding: 0 4px;
+	width: 300px;
+    transition: all 500ms ease; 
+}
+
+input[type="text"]:focus,#data:focus {
+    background-color: rgb(44, 50, 55);
+    border: 1px solid #fff;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    height: 22px;
+    max-width: 53px;
+
+
+    background-color: #283440;
+    border: 1px solid #374A5A;
+    color: #889CB0;
+
+    font-size: 12px;
+
+    transition: all 150ms linear;
+}
+
+button:hover {
+    background-color: #374C5E;
+    border-color: #557087;
+    color: white;
+}
+
+button:focus {
+    background-color: #445F78;
+    border-color: #5A7895;
+    color: white;
+}
+        </style>
     </head>
 
     <input type="text" name="desto" id="desto" placeholder="System name"></input>
