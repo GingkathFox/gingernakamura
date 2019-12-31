@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Cost Tool for Ginger Nakamura</title>
+    </head>
+
+    <p id="p"></p>
+
+    <button id="b">Click</button>
+
+    <script src="./bundle.js"></script>
+    <script>
+        
+
+        let b = document.getElementById('b')
+        b.onclick = (e) => {
+            e.preventDefault()
+            getJumps("Tanoo", "Uchoshi")
+            .then(r => {
+                p.innerText = r
+            })
+        }
+        
+    </script>
+</html>
