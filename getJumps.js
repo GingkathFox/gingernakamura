@@ -13,5 +13,5 @@ async function getJumps(orgin, desto) {
 
     let jumps = await esiJS.routes.planRoute(orgin, desto, 'shortest')
 
-    return --jumps.length
+    return jumps.length - 1
 }
