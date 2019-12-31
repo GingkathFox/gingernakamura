@@ -496,7 +496,9 @@ process.umask = function() { return 0; };
 let esiJS = require('esijs')
 
 
-module.exports = async function getJumps(orgin, desto) {
+module.exports = getJumps
+
+async function getJumps(orgin, desto) {
     orgin = await esiJS.universe.systems.systemInfo(orgin)
     desto = await esiJS.universe.systems.systemInfo(desto)
 
@@ -507,6 +509,8 @@ module.exports = async function getJumps(orgin, desto) {
 
     return jumps.length
 }
+
+console.log(getJumps)
 },{"esijs":54}],5:[function(require,module,exports){
 let getJumps = require('./getJumps')
 
