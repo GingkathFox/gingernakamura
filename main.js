@@ -8,7 +8,6 @@ b.onclick = (e) => {
     let desto = document.getElementById('desto')
 
     let v = desto.value
-    console.log(v)
 
     v === '' ? false : getJumps("Amarr", v)
     .then(r => {
